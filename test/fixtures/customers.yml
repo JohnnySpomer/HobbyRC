@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customerId: 1
+  name: MyString
+  discount: 9.99
+  image: MyString
+  address: one
+  order: one
+
+two:
+  customerId: 1
+  name: MyString
+  discount: 9.99
+  image: MyString
+  address: two
+  order: two
