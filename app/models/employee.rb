@@ -1,3 +1,3 @@
 class Employee < ApplicationRecord
-  belongs_to :customerId
+  belongs_to :customer
 end

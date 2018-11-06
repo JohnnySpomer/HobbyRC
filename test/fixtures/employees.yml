@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  employeeId: 1
+  employeeId: MyString
   position: MyString
-  customerId: one
+  customer: one
 
 two:
-  employeeId: 1
+  employeeId: MyString
   position: MyString
-  customerId: two
+  customer: two
