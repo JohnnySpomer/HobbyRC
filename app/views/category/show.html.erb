@@ -1,5 +1,7 @@
 <h1>Category</h1>
 
 <ul>
-    <%= @products.description %>
+    <% if !@products.empty? %>
+        <%= debug @products %>
+    <% end %>
 </ul>

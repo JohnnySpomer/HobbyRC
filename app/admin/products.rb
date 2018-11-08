@@ -1,6 +1,6 @@
 ActiveAdmin.register Product do
-    permit_params :productId, :description, :count, :weight, :price, :image,
-    product_categories_attributes: [:id, :product_id, :category_id, :_destroy], 
+    permit_params :productId, :description, :count, :weight, :price, :image, 
+    product_categories_attributes: [:id, :product_id, :category_id, :_destroy],
     order_items_attributes: [:id, :product_id, :order_id, :_destroy]
     
     index do 
@@ -14,6 +14,7 @@ ActiveAdmin.register Product do
         column :category do |product|
             product.categories.map { |cat| cat.name}.join(", ").html_safe
         end
+        actions
     end
 
     show do |order|
@@ -40,7 +41,7 @@ ActiveAdmin.register Product do
             f.input :price
             f.input :image
             f.has_many :product_categories, allow_destroy: true do |n_f|
-                n_f.input :categorys
+                n_f.input :category
             end
         end
 

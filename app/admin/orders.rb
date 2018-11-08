@@ -34,7 +34,7 @@ ActiveAdmin.register Order do
             f.input :date
             f.input :productCount
             f.input :totalPrice
-            # f.input :status
+            f.input :status_id
             f.has_many :order_items, allow_destroy: true do |n_f|
                 n_f.input :product
             end
