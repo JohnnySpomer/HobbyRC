@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class ProductsControllerTest < ActionDispatch::IntegrationTest
+class CategoryControllerTest < ActionDispatch::IntegrationTest
   test "should get show" do
-    get products_show_url
+    get category_show_url
     assert_response :success
   end
 

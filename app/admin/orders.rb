@@ -9,9 +9,9 @@ ActiveAdmin.register Order do
         column :productCount
         column :totalPrice
         column :completed
-        # column :products do |order|
-        #     order.products.map { |prod| prod.description }.join(", ").html_safe
-        # end
+        column :products do |order|
+            order.products.map { |prod| prod.description }.join(", ").html_safe
+        end
         actions
     end
 
@@ -21,9 +21,9 @@ ActiveAdmin.register Order do
             row :productCount
             row :totalPrice
             row :completed
-            # row :products do |order|
-            #     order.products.map { |prod| prod.description }.join(", ").html_safe
-            # end
+            row :products do |order|
+                order.products.map { |prod| prod.description }.join(", ").html_safe
+            end
         end
     end
 
@@ -35,9 +35,9 @@ ActiveAdmin.register Order do
             f.input :productCount
             f.input :totalPrice
             # f.input :status
-            # f.has_many :order_items, allow_destroy: true do |n_f|
-            #     n_f.input :product
-            # end
+            f.has_many :order_items, allow_destroy: true do |n_f|
+                n_f.input :product
+            end
         end
 
     f.actions
