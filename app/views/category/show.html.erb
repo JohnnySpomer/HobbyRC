@@ -2,6 +2,12 @@
 
 <ul>
     <% if !@products.empty? %>
-        <%= debug @products %>
+        <% @products.each do |prod| %>
+            <li>
+                <%= prod.description %>
+            </li>
+        <% end %>
+    <% else %>
+        <h3>There are no products available for this category</h3>
     <% end %>
 </ul>

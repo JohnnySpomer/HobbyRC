@@ -1,11 +1,12 @@
 ActiveAdmin.register Product do
-    permit_params :productId, :description, :count, :weight, :price, :image, 
+    permit_params :productId, :description, :count, :weight, :price, :image, :name,
     product_categories_attributes: [:id, :product_id, :category_id, :_destroy],
     order_items_attributes: [:id, :product_id, :order_id, :_destroy]
     
     index do 
         selectable_column
         column :id
+        column :name
         column :description
         column :count
         column :weight
@@ -20,6 +21,7 @@ ActiveAdmin.register Product do
     show do |order|
         attributes_table do
             row :id
+            row :name
             row :description
             row :count
             row :weight
@@ -35,6 +37,7 @@ ActiveAdmin.register Product do
         f.semantic_errors *f.object.errors.keys
 
         f.inputs "Products" do
+            f.input :name
             f.input :description
             f.input :count
             f.input :weight

@@ -8,7 +8,7 @@ ActiveAdmin.register Order do
         column :date
         column :productCount
         column :totalPrice
-        column :completed
+        column :status
         column :products do |order|
             order.products.map { |prod| prod.description }.join(", ").html_safe
         end
@@ -20,7 +20,7 @@ ActiveAdmin.register Order do
             row :date
             row :productCount
             row :totalPrice
-            row :completed
+            row :status
             row :products do |order|
                 order.products.map { |prod| prod.description }.join(", ").html_safe
             end
@@ -34,7 +34,7 @@ ActiveAdmin.register Order do
             f.input :date
             f.input :productCount
             f.input :totalPrice
-            f.input :status_id
+            f.input :status
             f.has_many :order_items, allow_destroy: true do |n_f|
                 n_f.input :product
             end
