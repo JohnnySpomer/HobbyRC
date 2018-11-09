@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'products/show'
   get 'products/view'
-  get 'contact/show'
+  get 'contact', to: "contact#show", as: "contact"
   get 'about', to: "about#show", as: "about"
   get 'categories', to: "category#index", as: "categories"
   get 'categories/:categoryId', to: "category#show", as: 'category'
