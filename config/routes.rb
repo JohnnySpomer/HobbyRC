@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search', to: "search#index", as: "search"
+  get 'results', to: "search#results", as: "results"
   get 'products/show'
   get 'products/view'
   get 'contact', to: "contact#show", as: "contact"

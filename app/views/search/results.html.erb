@@ -1,0 +1,27 @@
+<h2>We found <%= @productNames.size %> Products by thier name</h2>
+
+<% if !@productNames.empty? %>
+    <ul>
+        <% @productNames.each do |prod| %>
+            <li><%= link_to prod.name, prod %></li>
+            <ul>
+                <li><%= prod.description %></li>
+            </ul>
+
+        <% end %>
+    </ul>
+<% end %>
+
+<h2>We found <%= @productDescriptions.size %> Products by their description</h2>
+
+<% if !@productDescriptions.empty? %>
+    <ul>
+        <% @productDescriptions.each do |prod| %>
+            <li><%= link_to prod.name, prod %></li>
+            <ul>
+                <li><%= prod.description %></li>
+            </ul>
+
+        <% end %>
+    </ul>
+<% end %>
