@@ -1,5 +1,5 @@
 ActiveAdmin.register Order do
-    permit_params :orderId, :status, :date, :productCount, :totalPrice, :completed, 
+    permit_params :orderId, :customer_id, :status_id, :date, :productCount, :totalPrice, :completed, 
     order_items_attributes: [:id, :product_id, :order_id, :_destroy]
 
     index do 
@@ -9,6 +9,7 @@ ActiveAdmin.register Order do
         column :productCount
         column :totalPrice
         column :status
+        column :customer
         column :products do |order|
             order.products.map { |prod| prod.description }.join(", ").html_safe
         end
@@ -21,6 +22,7 @@ ActiveAdmin.register Order do
             row :productCount
             row :totalPrice
             row :status
+            row :customer
             row :products do |order|
                 order.products.map { |prod| prod.description }.join(", ").html_safe
             end
@@ -35,6 +37,7 @@ ActiveAdmin.register Order do
             f.input :productCount
             f.input :totalPrice
             f.input :status
+            f.input :customer
             f.has_many :order_items, allow_destroy: true do |n_f|
                 n_f.input :product
             end

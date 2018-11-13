@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   def index
+    @categorys = Category.all
   end
 
   def results

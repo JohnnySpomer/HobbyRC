@@ -7,4 +7,6 @@ class Product < ApplicationRecord
     
     validates :description, :count, :price, :name, presence: true
     validates :description, uniqueness: true
+
+    mount_uploader :image, ImageUploader
 end

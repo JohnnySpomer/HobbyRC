@@ -16,4 +16,9 @@
     <li>The product costs $
         <%= @product.price %>
     </li>
+    <% if @product.image.present? %>
+        <p>
+            <%= image_tag @product.image.url %>
+        </p>
+    <% end %>
 </ul>

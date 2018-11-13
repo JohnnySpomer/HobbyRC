@@ -1,9 +1,10 @@
 class Customer < ApplicationRecord
   belongs_to :address
-  belongs_to :order
 
   has_one :employee
+  has_many :orders
 
   validates :name, :email, :discount, presence: true
   validates :email, uniqueness: true
+
 end
