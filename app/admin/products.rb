@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Product do
-  permit_params :productId, :description, :count, :weight, :price, :image, :name,
-  product_categories_attributes: [:id, :product_id, :category_id, :_destroy],
-  order_items_attributes: [:id, :product_id, :order_id, :_destroy]
-  
-  index do 
+  permit_params :productId, :description, :count, :weight, :price, :image, :name, product_categories_attributes: [:id, :product_id, :category_id, :_destroy], order_items_attributes: [:id, :product_id, :order_id, :_destroy]
+
+  index do
     selectable_column
     column :id
     column :name
@@ -15,7 +13,7 @@ ActiveAdmin.register Product do
     column :price
     column :image
     column :category do |product|
-        product.categories.map { |cat| cat.name}.join(", ").html_safe
+      product.categories.map { |cat| cat.name }.join(', ').html_safe
     end
     actions
   end
@@ -30,7 +28,7 @@ ActiveAdmin.register Product do
       row :price
       row :image
       row :category do |product|
-          product.categories.map { |cat| cat.name}.join(", ").html_safe
+        product.categories.map { |cat| cat.name }.join(', ').html_safe
       end
     end
   end
@@ -38,7 +36,7 @@ ActiveAdmin.register Product do
   form do |f|
     f.semantic_errors *f.object.errors.keys
 
-    f.inputs "Products" do
+    f.inputs 'Products' do
       f.input :name
       f.input :description
       f.input :count
@@ -46,10 +44,10 @@ ActiveAdmin.register Product do
       f.input :price
       f.input :image
       f.has_many :product_categories, allow_destroy: true do |n_f|
-          n_f.input :category
+        n_f.input :category
       end
     end
 
-  f.actions
+    f.actions
   end
 end

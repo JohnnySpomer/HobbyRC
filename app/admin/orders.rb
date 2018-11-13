@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Order do
-  permit_params :orderId, :customer_id, :status_id, :date, :productCount, :totalPrice, :completed, 
-  order_items_attributes: [:id, :product_id, :order_id, :_destroy]
+  permit_params :orderId, :customer_id, :status_id, :date, :productCount, :totalPrice, :completed, order_items_attributes: [:id, :product_id, :order_id, :_destroy]
 
-  index do 
+  index do
     selectable_column
     column :id
     column :date
@@ -13,7 +12,7 @@ ActiveAdmin.register Order do
     column :status
     column :customer
     column :products do |order|
-      order.products.map { |prod| prod.description }.join(", ").html_safe
+      order.products.map { |prod| prod.description }.join(', ').html_safe
     end
     actions
   end
@@ -26,7 +25,7 @@ ActiveAdmin.register Order do
       row :status
       row :customer
       row :products do |order|
-        order.products.map { |prod| prod.description }.join(", ").html_safe
+        order.products.map { |prod| prod.description }.join(', ').html_safe
       end
     end
   end
@@ -34,7 +33,7 @@ ActiveAdmin.register Order do
   form do |f|
     f.semantic_errors *f.object.errors.keys
 
-    f.inputs "Orders" do
+    f.inputs 'Orders' do
       f.input :date
       f.input :productCount
       f.input :totalPrice
@@ -45,6 +44,6 @@ ActiveAdmin.register Order do
       end
     end
 
-  f.actions
+    f.actions
   end
 end

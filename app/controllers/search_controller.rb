@@ -1,14 +1,17 @@
+# frozen_string_literal: true
+
+# class documentation here
 class SearchController < ApplicationController
-  def index 
-    @categorys = Category.all 
+  def index
+    @categorys = Category.all
   end
 
   def results
     @product_names = Product.where(
       'name LIKE ?',
-      "%#{params[:q]}%" )
+      "%#{params[:q]}%")
     @product_descriptions = Product.where(
       'description LIKE ?',
-      "%#{params[:q]}%" )
+      "%#{params[:q]}%")
   end
 end
