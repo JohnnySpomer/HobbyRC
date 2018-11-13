@@ -40,6 +40,7 @@ gem 'devise'      #User Authentication
 gem 'activeadmin'  #Admin dashboard
 gem 'country_select'
 gem 'carrierwave'
+gem 'rubocop', '~> 0.60.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
