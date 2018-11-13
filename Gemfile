@@ -36,8 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'devise'      #User Authentication
-gem 'activeadmin'  #Admin dashboard
+gem 'devise' # User Authentication
+gem 'activeadmin' # Admin dashboard
 gem 'country_select'
 gem 'carrierwave'
 gem 'rubocop', '~> 0.60.0', require: false
