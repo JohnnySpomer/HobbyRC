@@ -1,3 +1,5 @@
 class ContactController < ApplicationController
-  def show end
+  def show 
+    # do nothing for now
+  end
 end

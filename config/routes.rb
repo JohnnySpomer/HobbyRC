@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'search', to: 'search#index', as: 'search'
   get 'results', to: 'search#results', as: 'results'

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# class documentation here
 class Province < ApplicationRecord
   has_many :addresses
   
