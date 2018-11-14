@@ -5,6 +5,7 @@ class Address < ApplicationRecord
   belongs_to :province
 
   has_many :customers
+  has_many :contacts
 
   validates :address, :city, :postalCode, :country, presence: true
 

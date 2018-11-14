@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_184946) do
+ActiveRecord::Schema.define(version: 2018_11_14_163228) do
+
+  create_table "abouts", force: :cascade do |t|
+    t.string "name"
+    t.string "mainText"
+    t.string "secondaryText"
+    t.string "finalText"
+    t.string "imageOne"
+    t.string "imageTwo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -60,6 +71,18 @@ ActiveRecord::Schema.define(version: 2018_11_13_184946) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "fax"
+    t.integer "address_id"
+    t.string "text"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_contacts_on_address_id"
   end
 
   create_table "customers", force: :cascade do |t|
