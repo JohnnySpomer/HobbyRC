@@ -3,6 +3,6 @@
 # class documentation here
 class ContactController < ApplicationController
   def show
-    # do nothing for now
+    @contacts = Contact.all
   end
 end

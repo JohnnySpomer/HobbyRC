@@ -1,35 +1,28 @@
-<h1>About HobbyRC</h1>
+<h1>About Us</h1>
 
-<p>
-		Established in 2003, Eliminator-RC started out to fulfill the void the Manitoba hobby scene 
-		had. We strive to have one of the most diverse and largest stocking hobby stores in CANADA! 
-		Eliminator-RC is a family run business that has many years of experience with RC’s, models, 
-		rockets, slot cars, and much more to provide you with most knowledge available for your 
-		purchases. We are constantly evolving with the technology in the hobby to make sure you 
-		have the most up to date products and to make sure you have the help and know-how to keep 
-		it working!
-	</p>
-	<p>
-		We deal directly with a wide variety of specialty hobby companies and major suppliers to 
-		make sure we have the best communication and to get the newest, hottest items! We have a 
-		full service department that can handle anything from your basic nitro tune-up, chassis 
-		setup, and all your electronic wiring needs, to more complex stuff like electric and nitro 
-		conversions, twin motor set-ups and everything in between. We are very passionate about our 
-		work and we make sure everything top notch when we do it!
-	</p>
-	<p>
-		Eliminator-RC is truly the one and only one stop hobby shop with a full assortment of 
-		building supplies in aluminum, brass, carbon fiber, wood, and styrene. We also have a large 
-		selection of good quality hard to find tools to make your repairs easy. We have the largest 
-		selection of lipo batteries, chargers, radio servos, hardware, and bearings ALL IN STOCK! 
-		The best part is if we don’t have what you want, we will do anything we can to get it for 
-		you. 
-	</p>
-	<p>
-		So, what are you waiting for? Come on down and check out our store today. The coffee is on, 
-		and we know you will be amazed at the size of our store, the amount of product we stock, 
-		and the great customer service we provide.
-	</p>
-
-<h3>Disclaimer</h3>
-<p>This content was copied from the Eliminator RC website.</p>
+<ul>
+    <% @abouts.each do |about| %>
+        <li>
+            <%= about.name %>
+        </li>
+        <li>
+          <%= about.mainText ||= "" %>
+        </li>
+        <li>
+          <%= about.secondaryText ||= "" %>
+        </li>
+        <li>
+          <%= about.finalText ||= "" %>
+        </li>
+        <li>
+          <p>
+            <%= about.imageOne ||= "" %>
+          </p>
+        </li>
+        <li>
+          <p>
+            <%= about.imageTwo ||= "" %>
+          </p>
+        </li>
+    <% end %>
+</ul>
