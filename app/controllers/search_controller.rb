@@ -9,9 +9,11 @@ class SearchController < ApplicationController
   def results
     @product_names = Product.where(
       'name LIKE ?',
-      "%#{params[:q]}%")
+      "%#{params[:q]}%"
+    )
     @product_descriptions = Product.where(
       'description LIKE ?',
-      "%#{params[:q]}%")
+      "%#{params[:q]}%"
+    )
   end
 end

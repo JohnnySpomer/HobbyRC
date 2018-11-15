@@ -2,7 +2,7 @@
 
 # class documentation here
 class Province < ApplicationRecord
-  has_many :addresses
+  has_many :addresses, dependent: :destroy
 
   validates :name, :taxRate, presence: true
   validates :name, uniqueness: true

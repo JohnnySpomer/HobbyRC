@@ -6,8 +6,10 @@ AllCops:
     - bin/**/*
     - test/**/*
     - app/admin/**/*
+    - app/uploaders/**/*
     - node_modules/**/*
     - lib/**/*
+    - Gemfile
 
 Encoding:
   Enabled: false

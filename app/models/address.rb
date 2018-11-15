@@ -4,8 +4,8 @@
 class Address < ApplicationRecord
   belongs_to :province
 
-  has_many :customers
-  has_many :contacts
+  has_many :customers, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   validates :address, :city, :postalCode, :country, presence: true
 

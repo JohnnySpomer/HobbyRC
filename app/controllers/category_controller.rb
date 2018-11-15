@@ -2,7 +2,6 @@
 
 # class documentation here
 class CategoryController < ApplicationController
-
   def index
     @categories = Category.all
   end
