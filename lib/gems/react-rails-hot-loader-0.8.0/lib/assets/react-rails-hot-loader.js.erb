@@ -1,0 +1,85 @@
+var ReactRailsHotLoader = {
+  since: null,
+  port: <%= React::Rails::HotLoader.port %>,
+  host: window.location.hostname,
+  shouldLog: true,
+
+  start: function() {
+    this._resetSince()
+    var wsURL = "ws://" + this.host + ":" + this.port
+    this.log("connecting to " + wsURL)
+    this._socket = new WebSocket(wsURL)
+
+    var _this = this
+
+    this._socket.onopen =   function() { _this.log("connected") }
+    this._socket.onclose =  function() { _this.log("disconnected") }
+
+    this._socket.onmessage = function(message) {
+      var changes = JSON.parse(message.data)
+      if (changes.bankrupt) {
+        _this._handleBankrupt(changes)
+      } else {
+        _this._hotLoad(changes)
+      }
+    }
+
+    this._interval = setInterval(function() {
+      if (_this._socket.readyState == WebSocket.OPEN) {
+        _this._socket.send(_this.since)
+      } else {
+        _this.log("WebSocket not ready, readyState: " + _this._socket.readyState)
+      }
+    }, 1500)
+  },
+
+  stop: function() {
+    this._socket.close()
+    clearInterval(this._interval)
+  },
+
+  _resetSince: function() {
+    // Ruby prefers seconds.
+    this.since = Date.now() / 1000
+  },
+
+  log: function(msg) {
+    if (this.shouldLog) {
+      console.log("[HotLoader] " + msg)
+    }
+  },
+
+  _hotLoad: function(changes) {
+    this.log("updating: " + changes.changed_file_names.join(", ") )
+    var _self = this
+
+    changes.changed_file_names.forEach(function(fileName, i) {
+      var changedAssetContent = changes.changed_asset_contents[i]
+
+      if (fileName.indexOf(".js") > -1) {
+        // Reload JS
+        try {
+          eval.call(window, changedAssetContent)
+        } catch (err) {
+          _self.log(err)
+        }
+      } else {
+        // Reload CSS
+        var styleTag = document.createElement("style")
+        styleTag.textContent = changedAssetContent
+        document.head.appendChild(styleTag)
+      }
+    })
+    ReactRailsUJS.mountComponents()
+    this._resetSince()
+    this.log("update finished")
+  },
+
+  _handleBankrupt: function(response) {
+    this.log("declaring bankruptcy! " + response.changed_files_count + " files changed.")
+    this.stop()
+    this.log("stopped")
+  },
+}
+
+ReactRailsHotLoader.start()

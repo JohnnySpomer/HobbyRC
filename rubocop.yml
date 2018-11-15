@@ -1,0 +1,19 @@
+AllCops:
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - script/**/*
+    - bin/**/*
+    - test/**/*
+    - app/admin/**/*
+    - node_modules/**/*
+    - lib/**/*
+
+Encoding:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 99
