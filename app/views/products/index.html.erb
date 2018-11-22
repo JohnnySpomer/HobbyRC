@@ -1,6 +1,14 @@
+
+
+<%= content_tag :div,
+  id: "productsData",
+  data: @products.to_json do %>
+<% end %>
+
 <h1>See our products</h1>
 
 <ul>
+    <%= javascript_pack_tag 'hello_react' %>
     <% @products.each do |prod| %>
         <li>
             Veiw the 
