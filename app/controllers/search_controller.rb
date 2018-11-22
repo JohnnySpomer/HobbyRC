@@ -7,11 +7,15 @@ class SearchController < ApplicationController
   end
 
   def results
-    @product_names = Product.where(
+    @category = Category.find(params[:category])
+    @products = @category.products
+
+    @product_names = @products.where(
       'name LIKE ?',
       "%#{params[:q]}%"
     )
-    @product_descriptions = Product.where(
+
+    @product_descriptions = @products.where(
       'description LIKE ?',
       "%#{params[:q]}%"
     )
