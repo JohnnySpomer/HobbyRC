@@ -3,10 +3,15 @@
 # class documentation here
 class ProductsController < ApplicationController
   def index
-    @products = Product.order(:name).where(
-      'status LIKE ?',
-      "%#{params[:q]}%"
+    if (!params.has_key?(:product_status) || params[:product_status] == "") then
+      @products = Product.order(:name)
+    else
+      @status = ProductStatus.find(params[:product_status])
+      @products = @status.products.order(:name).where(
+      'product_status_id LIKE ?',
+      "%#{params[:category]}%"
       )
+    end
   end
 
   def show

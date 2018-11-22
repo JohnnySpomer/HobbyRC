@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Product do
-  permit_params :productId, :description, :status, :count, :weight, :price, :product_status_id, :image, :name, product_categories_attributes: [:id, :product_id, :category_id, :_destroy], order_items_attributes: [:id, :product_id, :order_id, :_destroy]
+  permit_params :productId, :description, :count, :weight, :price, :product_status_id, :image, :name, product_categories_attributes: [:id, :product_id, :category_id, :_destroy], order_items_attributes: [:id, :product_id, :order_id, :_destroy]
 
   index do
     selectable_column
@@ -11,7 +11,7 @@ ActiveAdmin.register Product do
     column :count
     column :weight
     column :price
-    column :status
+    column :product_status
     column :image
     column :category do |product|
       product.categories.map { |cat| cat.name }.join(', ').html_safe
@@ -27,7 +27,7 @@ ActiveAdmin.register Product do
       row :count
       row :weight
       row :price
-      row :status
+      row :product_status
       row :image
       row :category do |product|
         product.categories.map { |cat| cat.name }.join(', ').html_safe
@@ -44,7 +44,7 @@ ActiveAdmin.register Product do
       f.input :count
       f.input :weight
       f.input :price
-      f.input :status
+      f.input :product_status
       f.input :image
       f.has_many :product_categories, allow_destroy: true do |n_f|
         n_f.input :category

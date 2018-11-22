@@ -7,13 +7,14 @@
 
 <%= form_tag products_path, method: :get do |f| %>
   <%= label_tag("List only products that are:") %>
-  <%= select_tag 'category', options_for_select(Category.all.map{|el| [el.name, el.id]}.insert(0, "")) %>
+  <%= select_tag 'product_status', options_for_select(ProductStatus.all.map{|el| [el.name, el.id]}.insert(0, "")) %>
   <%= submit_tag 'Listem' %>
 <% end %>
 
 <h1>See our products</h1>
 
-<ul>
+<% if !@products.empty? %>
+  <ul>
     <% @products.each do |prod| %>
         <li>
             Veiw the 
@@ -21,4 +22,9 @@
             page.
         </li>
     <% end %>
-</ul>
+  </ul>
+<% else %>
+  <%# use session to store the productsStatus variable 
+    for future display purposes. 
+  <div>None of our products are <%@status%></div>
+<% end %>
