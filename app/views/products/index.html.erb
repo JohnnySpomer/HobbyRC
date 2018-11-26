@@ -1,5 +1,7 @@
 <%= javascript_pack_tag 'hello_react' %>
 
+<%= paginate @products %>
+
 <%= content_tag :div,
   id: "productsData",
   data: @products.to_json do %>
