@@ -1,11 +1,4 @@
-<%= javascript_pack_tag 'hello_react' %>
-
 <%= paginate @products %>
-
-<%= content_tag :div,
-  id: "productsData",
-  data: @products.to_json do %>
-<% end %>
 
 <%= form_tag products_path, method: :get do |f| %>
   <%= label_tag("List only products that are:") %>

@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
       @products = @status.products.order(:name).where(
       'product_status_id LIKE ?',
       "%#{params[:category]}%"
-      )
+      ).page(params[:page]).per(5)
     end
   end
 
