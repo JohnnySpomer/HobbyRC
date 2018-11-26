@@ -45,6 +45,7 @@ gem 'country_select'
 gem 'devise' # User Authentication
 gem 'kaminari' # adds pagination
 gem 'rubocop', '~> 0.60.0', require: false
+gem 'stripe' # payment processing
 gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
