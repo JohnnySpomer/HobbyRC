@@ -3,6 +3,7 @@
 # class documentation here
 class ProductsController < ApplicationController
   def index
+    @order_item = current_order.order_items.new
     if (!params.has_key?(:product_status) || params[:product_status] == "") then
       @products = Product.order(:name).page(params[:page]).per(5)
     else
