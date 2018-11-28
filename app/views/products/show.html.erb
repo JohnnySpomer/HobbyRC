@@ -1,24 +1,8 @@
 <h1>The product</h1>
 
-<ul>
-    <li>Name: 
-        <%= @product.name %>
-    </li>
-    <li>Description: 
-        <%= @product.description %>
-    </li>
-    <li>There are 
-        <%= @product.count %> items in stock.
-    </li>
-    <li>The weight of the product is 
-        <%= @product.weight %> grams.
-    </li>
-    <li>The product costs $
-        <%= @product.price %>
-    </li>
-    <% if @product.image.present? %>
-        <p>
-            <%= image_tag @product.image.url %>
-        </p>
-    <% end %>
-</ul>
+<%= javascript_pack_tag 'hello_react' %>
+
+<%= content_tag :div,
+  id: "productData",
+  data: @product.to_json do %>
+<% end %>

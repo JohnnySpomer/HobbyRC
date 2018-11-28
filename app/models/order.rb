@@ -11,4 +11,17 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items, allow_destroy: true
 
   validates :date, :productCount, :totalPrice, :customer, presence: true
+
+  def subtotal
+    c = order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.product.price) : 0 }
+    c.sum
+  end
+  private
+  def set_order_status
+    self.order_status_id = 3
+  end
+
+  def update_subtotal
+    self[:subtotal] = subtotal
+  end
 end

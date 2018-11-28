@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
+gem 'fog'
+gem 'carrierwave'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -41,7 +43,9 @@ gem 'activeadmin' # Admin dashboard
 gem 'carrierwave'
 gem 'country_select'
 gem 'devise' # User Authentication
+gem 'kaminari' # adds pagination
 gem 'rubocop', '~> 0.60.0', require: false
+gem 'stripe' # payment processing
 gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_163228) do
+ActiveRecord::Schema.define(version: 2018_11_27_142216) do
 
   create_table "abouts", force: :cascade do |t|
     t.string "name"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2018_11_14_163228) do
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -144,6 +145,13 @@ ActiveRecord::Schema.define(version: 2018_11_14_163228) do
     t.index ["product_id"], name: "index_product_categories_on_product_id"
   end
 
+  create_table "product_statuses", force: :cascade do |t|
+    t.string "productStatusId"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.integer "productId"
     t.string "description"
@@ -154,6 +162,10 @@ ActiveRecord::Schema.define(version: 2018_11_14_163228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.integer "status_id"
+    t.integer "product_status_id"
+    t.index ["product_status_id"], name: "index_products_on_product_status_id"
+    t.index ["status_id"], name: "index_products_on_status_id"
   end
 
   create_table "provinces", force: :cascade do |t|

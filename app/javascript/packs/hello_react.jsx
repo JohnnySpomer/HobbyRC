@@ -2,30 +2,34 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
-
-{/* <li>
-  Veiw the 
-  <%= link_to prod.description, prod %>
-  page.
-</li> */}
-
 const Hello = props => {
-  let array = [];
+  // let url = "http://goo.gl/vyAs27"
+  // if (props.name.image.url != null) {
+  //   url = props.name.image.url
+  // }
 
-  for (let i = 0; i < props.name.length; i++){
-    let image = null;
+  return(
+  <div>
+    <ul>
+      <li>Name: 
+          { props.name.name }
+      </li>
+      <li>Description: 
+          { props.name.description }
+      </li>
+      <li>There are 
+          { props.name.count } items in stock.
+      </li>
+      <li>The weight of the product is 
+          { props.name.weight } grams.
+      </li>
+      <li>The product costs $
+          { props.name.price }
+      </li>
+      {/* <img src={require(url)}/> */}
+    </ul>
+  </div>)
 
-    if (props.name[i].image.url != null) {
-      image = props.name[i].image.url.toString()
-    }
-
-    array.push(
-      <li>{ props.name[i].name }</li>,
-      <p>View the { props.name[i].description }</p>,
-      // <img src={image} />
-    )
-  }
-  return array
 }
 
 Hello.defaultProps = {
@@ -33,12 +37,16 @@ Hello.defaultProps = {
 }
 
 Hello.propTypes = {
-  name: PropTypes.array
+  name: PropTypes.object
+}
+
+function showImage(props) {
+  return 
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const node = document.getElementById('productsData')
+  const node = document.getElementById('productData')
   const data = JSON.parse(node.getAttribute('data'))
   ReactDOM.render(
     <Hello name={data} />,
