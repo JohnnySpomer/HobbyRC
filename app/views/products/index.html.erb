@@ -6,28 +6,8 @@
   <%= submit_tag 'Listem' %>
 <% end %>
 
-<h1>See our products</h1>
-
 <% if !@products.empty? %>
-  <ul>
-    <% @products.each do |prod| %>
-        <li>
-            Veiw the 
-            <%= link_to prod.description, prod %>
-            page.
-        </li>
-    <% end %>
-  </ul>
-<% else %>
-  <%# use session to store the productsStatus variable 
-    for future display purposes. 
-  <div>None of our products are <%@status%></div>
-<% end %>
-
-
-
-
-<h3 class="text-center">Products for Sale</h3>
+  <h3 class="text-center">Products for Sale</h3>
 
 <div class="row">
   <div class="col-xs-6 col-xs-offset-3">
@@ -36,3 +16,6 @@
     <% end %>
   </div>
 </div>
+<% else %>
+  <h2>There are no products for the selected category</h2>
+<% end %>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'order_items/create'
   get 'order_items/update'
   get 'order_items/destroy'
-  get 'carts/show'
+  # get 'carts/show'
   get 'search', to: 'search#index', as: 'search'
   get 'results', to: 'search#results', as: 'results'
   # get 'products/show'
